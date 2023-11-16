@@ -19,11 +19,11 @@ app.get("/", (req, res) => {
 
 app.get('/vanilla/success', async (req, res) => {
   console.log(req.body);
-  res.json({ message: 'success' });
+  res.json({ message: 'success', body: req.body });
 });
 app.get('/vanilla/error', async (req, res) => {
   console.log(req.body);
-  res.json({ message: 'error' });
+  res.json({ message: 'error', body: req.body });
 });
 
 // Ecoute du serveur
