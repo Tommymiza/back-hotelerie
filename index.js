@@ -23,8 +23,8 @@ app.get('/vanilla/success', async (req, res) => {
   const formdata = new FormData();
   formdata.append("data", query);
   formdata.append('private_key', '25cc31e830862928724394b25dda666d9074f597cad31f54c4');
-  const res = await axios.post('https://vanilla.unityfianar.com/decrypt.php', formdata);
-  console.log(res);
+  const response = await axios.post('https://vanilla.unityfianar.com/decrypt.php', formdata);
+  console.log(response);
   res.json({ message: 'success'});
 });
 app.get('/vanilla/error', async (req, res) => {
