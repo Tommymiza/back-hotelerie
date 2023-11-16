@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./db");
+const axios = require('axios');
 
 const app = express();
 
@@ -18,12 +19,16 @@ app.get("/", (req, res) => {
 });
 
 app.get('/vanilla/success', async (req, res) => {
-  console.log("success", req);
-  res.json({ message: 'success', body: req });
+  const query = req.query;
+  const formdata = new FormData();
+  formdata.append("data", query);
+  const res = axios.post('https://vanilla.unityfianar.com/decrypt.php', formdata);
+  console.log(res);
+  res.json({ message: 'success'});
 });
 app.get('/vanilla/error', async (req, res) => {
-  console.log("error", req);
-  res.json({ message: 'error', body: req });
+  console.log("error");
+  res.json({ message: 'error' });
 });
 
 // Ecoute du serveur
